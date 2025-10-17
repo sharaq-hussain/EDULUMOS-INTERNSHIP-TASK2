@@ -1,0 +1,286 @@
+/* This :root block holds all our theme colors as variables.
+  JavaScript will update these variables to change the app's theme dynamically.
+*/
+:root {
+    --bg-gradient-start: #2c3e50;
+    --bg-gradient-end: #465875;
+    --card-bg: rgba(0, 0, 0, 0.25);
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.75);
+    --glass-bg: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --search-bg: rgba(255, 255, 255, 0.15);
+    --divider-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-primary);
+    background: linear-gradient(to top, var(--bg-gradient-end), var(--bg-gradient-start));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 1rem;
+    transition: background 0.8s ease-in-out, color 0.8s ease-in-out;
+}
+
+.weather-card {
+    width: 100%;
+    max-width: 48rem;
+    background: var(--card-bg);
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--glass-border);
+
+    /* The "frosted glass" effect */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+}
+
+/* Theme-Dependent Styles
+  These elements have their colors set by our CSS variables,
+  so they change automatically when the theme updates.
+*/
+#temperature,
+.card-header h1,
+.daily-item .temps,
+#recommendation-text {
+    color: var(--text-primary);
+}
+
+.search-input {
+    background-color: var(--search-bg);
+    color: var(--text-primary);
+    border: 2px solid transparent;
+}
+
+.search-input:focus {
+    border-color: var(--text-secondary);
+}
+
+.search-input::placeholder,
+.search-icon,
+#current-date,
+#weather-description,
+.detail-item p:first-child,
+.hourly-item .time,
+.daily-item .desc,
+.recommendation-card h3 {
+    color: var(--text-secondary);
+}
+
+.glassmorphism,
+.hourly-item,
+.daily-item,
+.recommendation-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+}
+
+.forecast-title {
+    border-bottom-color: var(--divider-color);
+}
+
+/* The fill property lets us color our SVGs with CSS */
+#weather-icon svg,
+.icon svg {
+    fill: var(--text-primary);
+}
+
+
+/* Main Layout Styles */
+.card-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    gap: 1rem;
+}
+
+.search-form {
+    position: relative;
+    width: 100%;
+}
+
+.search-input {
+    width: 100%;
+    border-radius: 9999px;
+    padding: 0.5rem 1rem 0.5rem 2.5rem;
+    transition: all 0.3s ease;
+}
+
+.search-icon {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+.weather-info-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: center;
+}
+
+.current-conditions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+#city-name {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+}
+
+.temp-details {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+#weather-icon {
+    width: 5rem;
+    height: 5rem;
+}
+
+#temperature {
+    font-size: 3rem;
+    font-weight: 800;
+}
+
+#weather-description {
+    font-size: 1.125rem;
+    text-transform: capitalize;
+}
+
+.glassmorphism {
+    border-radius: 1rem;
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    text-align: center;
+}
+
+.detail-item p:first-child { font-size: 0.875rem; }
+.detail-item p:last-child { font-size: 1.25rem; font-weight: 600; }
+
+.recommendation-card {
+    border-radius: 1rem;
+    padding: 1rem;
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.recommendation-card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.forecast-container {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.forecast-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom-width: 2px;
+}
+
+#hourly-forecast {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    text-align: center;
+}
+
+.hourly-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.5rem;
+    border-radius: 0.75rem;
+}
+
+.hourly-item .icon {
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+#daily-forecast {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.daily-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem;
+    border-radius: 0.75rem;
+}
+
+.daily-item .day { font-weight: 500; }
+.daily-item .details { display: flex; align-items: center; gap: 0.5rem; }
+.daily-item .icon { width: 2rem; height: 2.rem; }
+
+/* Utility Classes */
+.hidden { display: none !important; }
+
+.loading-error-container {
+    text-align: center;
+    padding: 2rem;
+}
+
+#error {
+    background-color: rgba(239, 68, 68, 0.5);
+    border-radius: 0.75rem;
+}
+
+.fade-in {
+    animation: fadeInAnimation 0.5s ease-in-out;
+}
+
+@keyframes fadeInAnimation {
+    0% { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive design for larger screens */
+@media (min-width: 768px) {
+    .card-header { flex-direction: row; }
+    .search-form { width: auto; }
+    .search-input { width: 16rem; }
+    .weather-info-grid { grid-template-columns: repeat(2, 1fr); }
+    .current-conditions { align-items: flex-start; text-align: left; }
+    #city-name { font-size: 2.5rem; }
+    #temperature { font-size: 4rem; }
+}
+

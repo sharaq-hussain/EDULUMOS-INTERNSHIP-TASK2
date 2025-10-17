@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+
+    <!-- Google Fonts for the Inter typeface -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Link to our stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="weather-card">
+        <header class="card-header">
+            <h1>Weather</h1>
+            <form id="search-form" class="search-form">
+                <input type="text" id="city-input" placeholder="Enter city name..." class="search-input">
+                <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+            </form>
+        </header>
+
+        <main id="weather-container">
+            <!-- These are hidden by default and shown by the JavaScript as needed -->
+            <div id="loading" class="loading-error-container hidden"><p>Loading...</p></div>
+            <div id="error" class="loading-error-container hidden"><p id="error-message"></p></div>
+            
+            <div id="weather-content" class="hidden fade-in">
+                <div class="weather-info-grid">
+                    <div class="current-conditions">
+                        <div>
+                            <h2 id="city-name"></h2>
+                            <p id="current-date"></p>
+                        </div>
+                        <div class="temp-details">
+                            <div id="weather-icon"></div>
+                            <div>
+                                <p id="temperature"></p>
+                                <p id="weather-description"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glassmorphism">
+                        <div class="detail-item"><p>Feels Like</p><p id="feels-like"></p></div>
+                        <div class="detail-item"><p>Humidity</p><p id="humidity"></p></div>
+                        <div class="detail-item"><p>Wind</p><p id="wind-speed"></p></div>
+                        <div class="detail-item"><p>Pressure</p><p id="pressure"></p></div>
+                    </div>
+                </div>
+
+                <div id="smart-recommendation" class="recommendation-card">
+                    <h3>Today's Advice</h3>
+                    <p id="recommendation-text"></p>
+                </div>
+
+                <div class="forecast-container">
+                    <div>
+                        <h3 class="forecast-title">Hourly Forecast</h3>
+                        <div id="hourly-forecast"></div>
+                    </div>
+                    <div>
+                        <h3 class="forecast-title">3-Day Forecast</h3>
+                        <div id="daily-forecast"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Our script is linked here. 'defer' ensures it runs after the HTML is loaded. -->
+    <script src="script.js" defer></script>
+</body>
+</html>
