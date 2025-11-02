@@ -1,1 +1,2 @@
 # EDULUMOS-INTERNSHIP-TASK2
+Smart Weather App
